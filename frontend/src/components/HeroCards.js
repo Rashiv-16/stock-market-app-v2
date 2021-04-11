@@ -1,8 +1,6 @@
 import HeroCard from "./HeroCard";
 import styled from "styled-components";
 
-import Draggable from "react-draggable";
-
 //img
 import google from "../img/google.png";
 import amazon from "../img/amazon.png";

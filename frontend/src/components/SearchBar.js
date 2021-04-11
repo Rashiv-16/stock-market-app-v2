@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import axios from "axios";
 
@@ -23,17 +23,23 @@ const Form = styled.form`
   }
 `;
 
-const SearchBar = ({ fetchedStock, setFetchedStock }) => {
+const SearchBar = ({ getData, setGetData }) => {
   const [keyword, setKeyword] = useState("");
-  const searchStock = async () => {
-    const { data } = axios.get(`/api/search/${keyword.trim()}`);
-    setFetchedStock(data);
+  const [temp, setTemp] = useState("");
+  const searchStock = async (key) => {
+    const { data } = await axios.post(`/api/search`, { data: { search: key } });
+    setTemp(data);
+    // console.log(data);
   };
 
+  useEffect(() => {
+    setGetData(temp);
+  }, [temp]);
   return (
     <Form
       onSubmit={(e) => {
         e.preventDefault();
+        searchStock(keyword);
       }}
     >
       <input
@@ -42,9 +48,9 @@ const SearchBar = ({ fetchedStock, setFetchedStock }) => {
           setKeyword(e.target.value);
         }}
         value={keyword}
-        placeholder="Search by company name"
+        placeholder="Search by Symbol name"
       ></input>
-      <p>{fetchedStock}</p>
+      <p>{temp && temp.Name}</p>
     </Form>
   );
 };

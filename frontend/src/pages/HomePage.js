@@ -9,8 +9,6 @@ import HeroCards from "../components/HeroCards";
 import HomePageTable from "../components/HomePageTable";
 import SearchBar from "../components/SearchBar";
 
-import DraggabelComp from "../components/DraggableComp";
-
 const HomePageSection = styled.section`
   width: 100%;
   padding: 2rem 10rem;
@@ -116,10 +114,7 @@ const HomePage = () => {
         <NameSearchContainer>
           <h5>Stock Data Details</h5>
           <div>
-            <SearchBar
-              fetchedStock={fetchedStock}
-              setFetchedStock={setFetchedStock}
-            />
+            <SearchBar getData={getData} setGetData={setGetData} />
           </div>
         </NameSearchContainer>
         <HomePageTable

@@ -11,8 +11,6 @@ import HomePage from "./pages/HomePage";
 import ViewPage from "./pages/ViewPage";
 
 const App = () => {
-  // const searchHandler = (data) => {};
-
   return (
     <main>
       <Header />

@@ -84,13 +84,14 @@ app.delete("/api/saved", (req, res) => {
   deletingDataHandler(req, res);
 });
 
-const searchData = async (name) => {
-  const data = await stockData.find({ name: name });
+const searchData = async (req, res) => {
+  const data = await StockData.find({ Symbol: req.body.data.search });
+  console.log(data);
   res.send(data);
 };
 
-app.post("/api/search/:name", (req, res) => {
-  searchData(req.params.name);
+app.post("/api/search", (req, res) => {
+  searchData(req, res);
 });
 
 const __dirname = path.resolve();
