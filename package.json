@@ -1,0 +1,11 @@
+{
+  "name": "stock-market-app-v2",
+  "version": "2.0.0",
+  "description": "A stock market app for stock lovers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhishek Yadav",
+  "license": "ISC"
+}
