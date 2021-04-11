@@ -8,7 +8,8 @@
     "start": "node backend/server",
     "client": "npm run start --prefix frontend",
     "server": "nodemon backend/server",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Abhishek Yadav",
   "license": "ISC",
