@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 //components
 import HeroCards from "../components/HeroCards";
-import Table from "../components/Table";
+import ViewPageTable from "../components/ViewPageTable";
 
 const ViewPageSection = styled.section`
   width: 100%;
@@ -54,7 +54,7 @@ const ViewPage = () => {
       <HeroCards />
       <TabularData>
         <Title>Saved Data Table</Title>
-        <Table
+        <ViewPageTable
           comp={"view"}
           savedStocks={savedStocks}
           setSavedStocks={setSavedStocks}

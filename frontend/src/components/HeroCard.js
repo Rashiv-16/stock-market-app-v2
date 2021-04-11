@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Draggable from "react-draggable";
 
 const HeroCardContainer = styled.div`
   width: 30rem;
@@ -47,17 +48,27 @@ const Price = styled.p`
   font-size: 2.2rem;
 `;
 
+// const Span = styled.span`
+//   border: 1px solid red;
+// `;
+
 const HeroCard = ({ src, price, symbol, flexOrderr }) => {
   return (
-    <HeroCardContainer draggable style={{ order: flexOrderr }}>
-      <SymbolLogoContainer>
-        <Symbol>{symbol}</Symbol>
-        <LogoContainer>
-          <img src={src} alt={symbol} />
-        </LogoContainer>
-      </SymbolLogoContainer>
-      <Price>{price} USD</Price>
-    </HeroCardContainer>
+    <Draggable handle="strong">
+      <div className="box no-cursor">
+        <strong className="cursor">
+          <HeroCardContainer>
+            <SymbolLogoContainer className="cursor">
+              <Symbol>{symbol}</Symbol>
+              <LogoContainer>
+                <img src={src} alt={symbol} />
+              </LogoContainer>
+            </SymbolLogoContainer>
+            <Price>{price} USD</Price>
+          </HeroCardContainer>
+        </strong>
+      </div>
+    </Draggable>
   );
 };
 

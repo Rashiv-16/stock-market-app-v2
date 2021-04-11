@@ -1,6 +1,8 @@
 import HeroCard from "./HeroCard";
 import styled from "styled-components";
 
+import Draggable from "react-draggable";
+
 //img
 import google from "../img/google.png";
 import amazon from "../img/amazon.png";
@@ -23,7 +25,7 @@ const HeroCardsContainer = styled.div`
 
 const HeroCards = () => {
   return (
-    <HeroCardsContainer dropp>
+    <HeroCardsContainer>
       <HeroCard src={google} price={1} symbol="GOOGL" flexOrderr="2" />
       <HeroCard src={fb} price={2} symbol="FB" flexOrderr="3" />
       <HeroCard src={amazon} price={3} symbol="AMZN" flexOrderr="1" />

@@ -6,8 +6,10 @@ import axios from "axios";
 
 //components
 import HeroCards from "../components/HeroCards";
-import Table from "../components/Table";
+import HomePageTable from "../components/HomePageTable";
 import SearchBar from "../components/SearchBar";
+
+import DraggabelComp from "../components/DraggableComp";
 
 const HomePageSection = styled.section`
   width: 100%;
@@ -120,7 +122,11 @@ const HomePage = () => {
             />
           </div>
         </NameSearchContainer>
-        <Table comp={"home"} getData={getData} setGetData={setGetData} />
+        <HomePageTable
+          getData={getData}
+          setGetData={setGetData}
+          fetchStocksHandler={fetchStocksHandler}
+        />
       </StockDetailsTabularData>
       <Paginate>
         <div>

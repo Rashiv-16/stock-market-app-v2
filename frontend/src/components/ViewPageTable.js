@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 
 import axios from "axios";
 import styled from "styled-components";
@@ -169,35 +169,16 @@ const ActionContainer = styled.div`
   }
 `;
 
-const Table = ({
-  comp,
-  savedStocks = [],
-  setSavedStocks,
-  getSavedStock,
-  getData = [],
-  setGetData,
-}) => {
-  const [isSaved, setIsSaved] = useState(false);
+const Table = ({ savedStocks = [], setSavedStocks, getSavedStock }) => {
+  let mappingArray = savedStocks;
+  let buttonName = "Delete";
 
-  let mappingArray = [];
-  let buttonName = "";
-  if (comp === "view") {
-    mappingArray = savedStocks;
-    buttonName = "Delete";
-  } else if (comp === "home") {
-    mappingArray = getData;
-    buttonName = "Save";
-  }
+  useEffect(() => {
+    getSavedStock();
+  }, [setSavedStocks]);
 
-  if (isSaved) {
-  }
-
-  const deleteHandler = async (symbol) => {
-    await axios.delete("/api/saved", { data: { symbol: symbol } });
-  };
-
-  const saveHandler = async (symbol) => {
-    await axios.post("/api/saved", { data: { symbol: symbol } });
+  const deleteHandler = (symbol) => {
+    axios.delete("/api/saved", { data: { symbol: symbol } });
   };
 
   if (mappingArray.length === 0) {
@@ -207,7 +188,6 @@ const Table = ({
       </TableContainer>
     );
   }
-
   const mappedData = mappingArray.map((stock) => {
     return (
       <TableContainer key={stock.Symbol + stock["Net Change"]}>
@@ -231,21 +211,12 @@ const Table = ({
             <h5>Action</h5>
             <button
               onClick={(e) => {
-                if (comp === "view") {
-                  deleteHandler(stock.Symbol);
-                  const newArray = savedStocks.filter((innerStock) => {
-                    return innerStock.Symbol !== stock.Symbol;
-                  });
-                  setSavedStocks(newArray);
-                  getSavedStock();
-                }
-                if (comp === "home") {
-                  saveHandler(stock.Symbol);
-                  e.target.innerText = "View";
-                  e.target.style.backgroundColor = "var(--primary-color)";
-                  setIsSaved(true);
-                  window.location.replace("/view");
-                }
+                deleteHandler(stock.Symbol);
+                const newArray = savedStocks.filter((innerStock) => {
+                  return innerStock.Symbol !== stock.Symbol;
+                });
+                setSavedStocks(newArray);
+                getSavedStock();
               }}
             >
               {buttonName}

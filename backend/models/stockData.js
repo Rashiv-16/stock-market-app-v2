@@ -13,6 +13,7 @@ const schema = mongoose.Schema({
   Volume: String,
   Sector: String,
   Industry: String,
+  saved: Boolean,
 });
 
 const StockData = mongoose.model("StockData", schema);
