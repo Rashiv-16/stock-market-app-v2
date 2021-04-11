@@ -1,12 +1,29 @@
-//css
-import "./App.css";
+import { Route, Switch } from "react-router";
 
-function App() {
+//global css
+import "./app.css";
+
+//components
+import Header from "./components/Header";
+
+//pages
+import HomePage from "./pages/HomePage";
+import ViewPage from "./pages/ViewPage";
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Yo version 2</h1>
-    </div>
+    <main>
+      <Header />
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/view">
+          <ViewPage />
+        </Route>
+      </Switch>
+    </main>
   );
-}
+};
 
 export default App;

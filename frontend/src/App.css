@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
+
+:root {
+  --header-background: rgba(3, 28, 71, 0.8);
+  --primary-color: #6d5bd0;
+  --secondary-color: #18a0fb;
+  /* --card-border: #211f5780; */
+  --card-border: #5b859e;
+  /* --card-background: #40378a20; */
+  --card-background: #e2ecf3;
+  --symbol-background: #e6e6f2;
+  --dot-color: #4a4aff;
+  --montserat: "Montserrat", sans-serif;
+  --roboto: "Roboto", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+#root {
+  max-width: 192rem;
+  width: 100%;
+  height: 100vh;
+  min-height: max-content;
+  margin: 0 auto;
+}
